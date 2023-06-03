@@ -16,7 +16,9 @@ export const turnoComputadora = ( puntosMinimos, puntosHTML, divCartasComputador
     if( !puntosHTML ) throw new Error('El argumento puntosHTML es necesario')
 
     let puntosComputadora = 0;
-
+    
+    let ganadasComputadora = 0;
+    const contadorGanadasComputadora = document.querySelector('#computadora-ganadas span');
 
     do {
         const carta = pedirCarta( deck );
@@ -34,17 +36,21 @@ export const turnoComputadora = ( puntosMinimos, puntosHTML, divCartasComputador
             break;
         }
 
-    } while ((puntosComputadora < puntosMinimos) && (puntosMinimos <= 21));
+    } while ((puntosComputadora <= puntosMinimos) && (puntosMinimos <= 21));
 
     setTimeout(() => {
         if (puntosComputadora === puntosMinimos) {
             alert('Nadie gana :(');
         } else if (puntosMinimos > 21) {
             alert('Computadora gana')
+            ganadasComputadora++;
+            contadorGanadasComputadora.innerText = ganadasComputadora;
         } else if (puntosComputadora > 21) {
             alert('Jugador Gana');
         } else {
             alert('Computadora Gana')
+            ganadasComputadora++;
+            contadorGanadasComputadora.innerText = ganadasComputadora;
         }
     }, 100);
 }

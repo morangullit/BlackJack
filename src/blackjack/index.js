@@ -17,6 +17,8 @@ const especiales = ['A', 'J', 'Q', 'K'];
 let puntosJugador = 0,
     puntosComputadora = 0;
 
+let ganadasJugador = 0;
+
 // Referencias del HTML
 const btnPedir = document.querySelector('#btnPedir');
 const btnDetener = document.querySelector('#btnDetener');
@@ -26,6 +28,7 @@ const divCartasJugador = document.querySelector('#jugador-cartas');
 const divCartasComputadora = document.querySelector('#computadora-cartas');
 
 const puntosHTML = document.querySelectorAll('small');
+const contadorGanadasJugador = document.querySelector('#jugador-ganadas span')
 
 
 
@@ -58,6 +61,8 @@ btnPedir.addEventListener('click', () => {
         btnPedir.disabled = true;
         btnDetener.disabled = true;
         turnoComputadora(puntosJugador, puntosHTML[1], divCartasComputadora, deck);
+        ganadasJugador++;
+        contadorGanadasJugador.innerText = ganadasJugador;
     }
 
 });
